@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Velvet Aura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #5e3a3a;
+            --secondary: #e8c6c6;
+            --accent: #ff7e7e;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .faq-question {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: var(--accent);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question {
+            color: var(--accent);
+        }
+        
+        .faq-item.active .feather-chevron-down {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="w-1/4">
+                    <a href="index.html" class="title-font text-2xl font-bold text-gray-800">Velvet Aura</a>
+                </div>
+                
+                <!-- Center Navigation -->
+                <div class="w-2/4 flex justify-center">
+                    <div class="flex space-x-8">
+                        <a href="index.html" class="nav-link text-gray-800 hover:text-rose-400">Home</a>
+                        <a href="shop.html" class="nav-link text-gray-800 hover:text-rose-400">Shop All</a>
+                        <a href="about.html" class="nav-link text-gray-800 hover:text-rose-400">About Us</a>
+                        <a href="faq.html" class="nav-link text-rose-500 hover:text-rose-400">FAQ</a>
+                        <a href="contact.html" class="nav-link text-gray-800 hover:text-rose-400">Contact Us</a>
+                    </div>
+                </div>
+                
+                <!-- Right Icons -->
+                <div class="w-1/4 flex justify-end space-x-6">
+                    <a href="search.html" class="text-gray-800 hover:text-rose-400">
+                        <i data-feather="search"></i>
+                    </a>
+                    <a href="account.html" class="text-gray-800 hover:text-rose-400">
+                        <i data-feather="user"></i>
+                    </a>
+                    <a href="cart.html" class="text-gray-800 hover:text-rose-400">
+                        <i data-feather="shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Hero -->
+    <section class="pt-32 pb-20 bg-rose-500 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="title-font text-5xl font-bold mb-6">Frequently Asked Questions</h1>
+            <p class="text-xl max-w-3xl mx-auto">Find answers to common questions about our products and services</p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">How do I choose the right fragrance?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>Choosing a fragrance is a personal experience. Consider the occasions you'll wear it, your personality, and the scents you're naturally drawn to. Our fragrance quiz can help guide you to scents that match your preferences. You can also order samples to try before committing to a full bottle.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">What's the difference between Eau de Parfum and Eau de Toilette?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>Eau de Parfum (EDP) has a higher concentration of fragrance oils (15-20%) and typically lasts longer on the skin (6-8 hours). Eau de Toilette (EDT) has a lower concentration (5-15%) and generally lasts 4-6 hours. EDPs are more intense, while EDTs are lighter and often more suitable for daytime wear.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">How should I store my fragrance?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>To preserve your fragrance's quality, store it in a cool, dark place away from direct sunlight and extreme temperature changes. Bathrooms are not ideal due to humidity and temperature fluctuations. Original packaging can help protect the fragrance from light exposure.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">How long does shipping take?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>Standard shipping typically takes 3-5 business days within the US and 7-14 business days for international orders. We also offer express shipping options (2-3 business days) for domestic orders. Processing time is 1-2 business days before shipment. You'll receive tracking information once your order ships.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">What is your return policy?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>We accept returns within 30 days of purchase for unopened and unused products in their original packaging. Due to the nature of fragrance products, we cannot accept returns of opened items unless they're defective. For defective products, please contact our customer service within 14 days of receipt.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">Are your products cruelty-free and vegan?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>Yes! All Velvet Aura products are cruelty-free and never tested on animals. Most of our fragrances are vegan, though some do contain ethically sourced beeswax or honey derivatives. Vegan options are clearly marked on product pages.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">Can I get samples before purchasing?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>Absolutely! We offer sample sets that let you try multiple scents before committing to a full bottle. Samples are also included with every full-size purchase. Additionally, we have a discovery kit that includes our most popular fragrances in travel-size formats.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item pb-6">
+                    <div class="faq-question flex justify-between items-center cursor-pointer">
+                        <h3 class="text-xl font-semibold">How can I make my fragrance last longer?</h3>
+                        <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600">
+                        <p>Apply fragrance to pulse points (wrists, neck, behind ears) where body heat helps diffuse the scent. Moisturized skin holds fragrance better, so consider applying unscented lotion first. Avoid rubbing wrists together as this breaks down the fragrance molecules. Layering with matching shower gel or lotion can also extend wear time.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-gray-100 p-8 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Still have questions?</h3>
+                <p class="mb-6 text-gray-600">Our customer service team is happy to help with any additional questions you may have.</p>
+                <a href="contact.html" class="inline-block px-6 py-3 bg-rose-500 text-white rounded-full hover:bg-rose-600 transition duration-300">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="title-font text-xl font-bold mb-4">Velvet Aura</h3>
+                    <p class="text-gray-400 mb-4">Premium fragrances crafted with passion and precision.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">All Fragrances</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Best Sellers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Gift Sets</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Travel Size</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="mr-3 mt-1"></i>
+                            <span>123 Fragrance Lane, Paris, France</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="mail" class="mr-3 mt-1"></i>
+                            <span>hello@velvetaura.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="phone" class="mr-3 mt-1"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Velvet Aura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize feather icons
+        feather.replace();
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

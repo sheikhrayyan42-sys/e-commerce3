@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Velvet Aura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #5e3a3a;
+            --secondary: #e8c6c6;
+            --accent: #ff7e7e;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-item:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            border-left: none;
+            border-right: none;
+            padding: 0;
+        }
+        
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-hover-effect:hover::after {
+            left: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="w-1/4">
+                    <a href="index.html" class="title-font text-2xl font-bold text-gray-800">Velvet Aura</a>
+                </div>
+                
+                <!-- Center Navigation -->
+                <div class="w-2/4 flex justify-center">
+                    <div class="flex space-x-8">
+                        <a href="index.html" class="nav-link text-gray-800 hover:text-rose-400">Home</a>
+                        <a href="shop.html" class="nav-link text-gray-800 hover:text-rose-400">Shop All</a>
+                        <a href="about.html" class="nav-link text-gray-800 hover:text-rose-400">About Us</a>
+                        <a href="faq.html" class="nav-link text-gray-800 hover:text-rose-400">FAQ</a>
+                        <a href="contact.html" class="nav-link text-gray-800 hover:text-rose-400">Contact Us</a>
+                    </div>
+                </div>
+                
+                <!-- Right Icons -->
+                <div class="w-1/4 flex justify-end space-x-6">
+                    <a href="search.html" class="text-gray-800 hover:text-rose-400">
+                        <i data-feather="search"></i>
+                    </a>
+                    <a href="account.html" class="text-gray-800 hover:text-rose-400">
+                        <i data-feather="user"></i>
+                    </a>
+                    <a href="cart.html" class="text-rose-500 hover:text-rose-400">
+                        <i data-feather="shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Hero -->
+    <section class="pt-32 pb-20 bg-rose-500 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="title-font text-5xl font-bold mb-6">Your Cart</h1>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Cart Items -->
+                <div class="w-full lg:w-2/3">
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <i data-feather="shopping-cart" class="text-rose-500 mr-3"></i>
+                            <h2 class="text-xl font-semibold">3 Items in Your Cart</h2>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                                <img src="http://static.photos/cosmetic/1024x576/1" alt="Velvet Noire" class="w-full h-auto rounded-lg">
+                            </div>
+                            <div class="w-full md:w-3/4 md:pl-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-semibold">Velvet Noire</h3>
+                                    <button class="text-gray-400 hover:text-rose-500">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <p class="text-gray-600 mb-4">Eau de Parfum - 100ml</p>
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <div class="flex items-center mb-4 md:mb-0">
+                                        <button class="quantity-btn rounded-l-lg">-</button>
+                                        <input type="number" value="1" min="1" class="quantity-input">
+                                        <button class="quantity-btn rounded-r-lg">+</button>
+                                    </div>
+                                    <div>
+                                        <span class="text-lg font-semibold">$89.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Item 2 -->
+                    <div class="cart-item bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                                <img src="http://static.photos/cosmetic/1024x576/2" alt="Aurora Blossom" class="w-full h-auto rounded-lg">
+                            </div>
+                            <div class="w-full md:w-3/4 md:pl-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-semibold">Aurora Blossom</h3>
+                                    <button class="text-gray-400 hover:text-rose-500">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <p class="text-gray-600 mb-4">Eau de Toilette - 50ml</p>
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <div class="flex items-center mb-4 md:mb-0">
+                                        <button class="quantity-btn rounded-l-lg">-</button>
+                                        <input type="number" value="2" min="1" class="quantity-input">
+                                        <button class="quantity-btn rounded-r-lg">+</button>
+                                    </div>
+                                    <div>
+                                        <span class="text-lg font-semibold">$150.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Item 3 -->
+                    <div class="cart-item bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                                <img src="http://static.photos/cosmetic/1024x576/3" alt="Midnight Silk" class="w-full h-auto rounded-lg">
+                            </div>
+                            <div class="w-full md:w-3/4 md:pl-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-semibold">Midnight Silk</h3>
+                                    <button class="text-gray-400 hover:text-rose-500">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <p class="text-gray-600 mb-4">Eau de Parfum - 100ml</p>
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <div class="flex items-center mb-4 md:mb-0">
+                                        <button class="quantity-btn rounded-l-lg">-</button>
+                                        <input type="number" value="1" min="1" class="quantity-input">
+                                        <button class="quantity-btn rounded-r-lg">+</button>
+                                    </div>
+                                    <div>
+                                        <span class="text-lg font-semibold">$95.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <a href="shop.html" class="flex items-center text-rose-500 hover:text-rose-600">
+                            <i data-feather="arrow-left" class="mr-2" width="18"></i>
+                            Continue Shopping
+                        </a>
+                        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">
+                            Update Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Cart Summary -->
+                <div class="w-full lg:w-1/3">
+                    <div class="bg-gray-50 p-6 rounded-lg sticky top-32">
+                        <h2 class="text-xl font-semibold mb-6">Order Summary</h2>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="font-semibold">$334.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Shipping</span>
+                                <span class="font-semibold">$5.99</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tax</span>
+                                <span class="font-semibold">$26.72</span>
+                            </div>
+                            <div class="border-t border-gray-300 pt-4 flex justify-between">
+                                <span class="text-lg font-semibold">Total</span>
+                                <span class="text-lg font-bold">$366.71</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="promo-code" class="block text-gray-700 mb-2">Promo Code</label>
+                            <div class="flex">
+                                <input type="text" id="promo-code" placeholder="Enter promo code" class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:border-rose-500">
+                                <button class="px-4 py-3 bg-gray-800 text-white rounded-r-lg hover:bg-black">Apply</button>
+                            </div>
+                        </div>
+                        
+                        <a href="checkout.html" class="btn-hover-effect block w-full px-6 py-4 bg-rose-500 text-white font-semibold text-center rounded-lg hover:bg-rose-600 transition duration-300">
+                            Proceed to Checkout
+                        </a>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-600">or</p>
+                            <a href="#" class="inline-block mt-2 text-rose-500 hover:underline">Check out with PayPal</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mt-6">
+                        <h3 class="font-semibold mb-4">Gift Wrapping</h3>
+                        <p class="text-gray-600 mb-4">Add luxury gift wrapping for $7.99 per item. Perfect for special occasions!</p>
+                        <button class="w-full px-4 py-2 border border-rose-500 text-rose-500 rounded-lg hover:bg-rose-50 transition duration-300">
+                            Add Gift Wrapping
+                        </button>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mt-6">
+                        <h3 class="font-semibold mb-4">Need Help?</h3>
+                        <p class="text-gray-600 mb-4">Our customer service team is available to assist you with any questions about your order.</p>
+                        <a href="contact.html" class="inline-block px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition duration-300">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-3xl font-bold mb-8 text-center text-gray-800">You May Also Like</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="http://static.photos/cosmetic/1024x576/4" alt="Product 1" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <button class="px-4 py-2 bg-white text-gray-800 font-semibold rounded-full text-sm">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1">Golden Amber</h3>
+                        <p class="text-gray-600 text-sm mb-2">Eau de Parfum</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$105.00</span>
+                            <button class="px-3 py-1 bg-rose-500 text-white rounded-full text-xs hover:bg-rose-600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="http://static.photos/cosmetic/1024x576/5" alt="Product 2" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <button class="px-4 py-2 bg-white text-gray-800 font-semibold rounded-full text-sm">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1">Cotton Bloom</h3>
+                        <p class="text-gray-600 text-sm mb-2">Eau de Toilette</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$68.00</span>
+                            <button class="px-3 py-1 bg-rose-500 text-white rounded-full text-xs hover:bg-rose-600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="http://static.photos/cosmetic/1024x576/6" alt="Product 3" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <button class="px-4 py-2 bg-white text-gray-800 font-semibold rounded-full text-sm">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1">Pearl Essence</h3>
+                        <p class="text-gray-600 text-sm mb-2">Eau de Parfum</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$120.00</span>
+                            <button class="px-3 py-1 bg-rose-500 text-white rounded-full text-xs hover:bg-rose-600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="http://static.photos/cosmetic/1024x576/7" alt="Product 4" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <button class="px-4 py-2 bg-white text-gray-800 font-semibold rounded-full text-sm">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold mb-1">Velvet Noir</h3>
+                        <p class="text-gray-600 text-sm mb-2">Eau de Parfum</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$89.00</span>
+                            <button class="px-3 py-1 bg-rose-500 text-white rounded-full text-xs hover:bg-rose-600">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="title-font text-xl font-bold mb-4">Velvet Aura</h3>
+                    <p class="text-gray-400 mb-4">Premium fragrances crafted with passion and precision.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i data-feather="pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Shop</h4>
+                    <ul class="space-y-2">
+</body>
+</html> 
